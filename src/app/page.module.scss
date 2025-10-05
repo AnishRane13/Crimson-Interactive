@@ -1,0 +1,246 @@
+@use '../styles/variables.scss' as *;
+
+.container {
+  min-height: 100vh;
+  background: $background-color;
+  padding: $spacing-xl;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+  padding: $spacing-2xl 0;
+}
+
+.title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin: 0 0 $spacing-md 0;
+  background: linear-gradient(135deg, $primary-color, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  margin: 0;
+  font-weight: $font-weight-normal;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.papersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $shadow-md;
+  border: 1px solid $border-color;
+}
+
+.errorIcon {
+  font-size: 4rem;
+  margin-bottom: $spacing-lg;
+}
+
+.errorTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin: 0 0 $spacing-md 0;
+}
+
+.errorMessage {
+  font-size: $font-size-lg;
+  color: $text-secondary;
+  margin: 0 0 $spacing-xl 0;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.retryButton {
+  background: $primary-color;
+  color: white;
+  border: none;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.noResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  text-align: center;
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+}
+
+.noResultsIcon {
+  font-size: 3rem;
+  margin-bottom: $spacing-lg;
+  opacity: 0.7;
+}
+
+.noResultsTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin: 0 0 $spacing-md 0;
+}
+
+.noResultsMessage {
+  font-size: $font-size-base;
+  color: $text-secondary;
+  margin: 0 0 $spacing-xl 0;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+.clearSearchButton {
+  background: $secondary-color;
+  color: white;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: darken($secondary-color, 10%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: $breakpoint-lg) {
+  .container {
+    padding: $spacing-lg;
+  }
+
+  .papersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: $spacing-md;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .container {
+    padding: $spacing-md;
+  }
+
+  .header {
+    margin-bottom: $spacing-xl;
+    padding: $spacing-xl 0;
+  }
+
+  .title {
+    font-size: $font-size-2xl;
+  }
+
+  .subtitle {
+    font-size: $font-size-base;
+  }
+
+  .papersGrid {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+
+  .errorContainer,
+  .noResults {
+    padding: $spacing-xl;
+    min-height: 50vh;
+  }
+
+  .errorTitle {
+    font-size: $font-size-xl;
+  }
+
+  .errorMessage,
+  .noResultsMessage {
+    font-size: $font-size-sm;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .container {
+    padding: $spacing-sm;
+  }
+
+  .header {
+    margin-bottom: $spacing-lg;
+    padding: $spacing-lg 0;
+  }
+
+  .title {
+    font-size: $font-size-xl;
+  }
+
+  .subtitle {
+    font-size: $font-size-sm;
+  }
+
+  .papersGrid {
+    gap: $spacing-sm;
+  }
+
+  .errorContainer,
+  .noResults {
+    padding: $spacing-lg;
+    min-height: 40vh;
+  }
+
+  .errorIcon {
+    font-size: 3rem;
+  }
+
+  .noResultsIcon {
+    font-size: 2rem;
+  }
+}
