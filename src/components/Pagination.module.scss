@@ -1,0 +1,277 @@
+@use '../styles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  align-items: center;
+  padding: $spacing-lg;
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+  margin-top: $spacing-xl;
+}
+
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+.resultsText {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.pageSizeContainer {
+  position: relative;
+}
+
+.pageSizeButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $background-color;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.05);
+    color: $text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.chevron {
+  transition: transform $transition-fast;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.pageSizeOptions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: $card-background;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  z-index: 10;
+  min-width: 150px;
+  margin-top: $spacing-xs;
+}
+
+.pageSizeOption {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  background: none;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  text-align: left;
+
+  &:hover {
+    background: $background-color;
+    color: $text-primary;
+  }
+
+  &.active {
+    background: $primary-color;
+    color: white;
+  }
+
+  &:first-child {
+    border-radius: $border-radius-md $border-radius-md 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 $border-radius-md $border-radius-md;
+  }
+}
+
+.pageNavigation {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $background-color;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.05);
+    color: $text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.previousButton {
+  svg {
+    margin-right: $spacing-xs;
+  }
+}
+
+.nextButton {
+  svg {
+    margin-left: $spacing-xs;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+}
+
+.pageButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: $spacing-sm;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $background-color;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.05);
+    color: $text-primary;
+  }
+
+  &.active {
+    border-color: $primary-color;
+    background: $primary-color;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  color: $text-muted;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+@media (max-width: $breakpoint-md) {
+  .resultsInfo {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .pageSizeContainer {
+    align-self: center;
+  }
+
+  .pageNavigation {
+    gap: $spacing-xs;
+  }
+
+  .navButton {
+    padding: $spacing-sm;
+    font-size: $font-size-xs;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .pageButton {
+    min-width: 36px;
+    height: 36px;
+    font-size: $font-size-xs;
+  }
+
+  .ellipsis {
+    min-width: 36px;
+    height: 36px;
+    font-size: $font-size-xs;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .pagination {
+    padding: $spacing-md;
+  }
+
+  .pageNumbers {
+    gap: 2px;
+  }
+
+  .pageButton {
+    min-width: 32px;
+    height: 32px;
+    padding: $spacing-xs;
+  }
+
+  .ellipsis {
+    min-width: 32px;
+    height: 32px;
+  }
+
+  .navButton {
+    padding: $spacing-xs $spacing-sm;
+  }
+}

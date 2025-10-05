@@ -1,0 +1,300 @@
+@use '../styles/variables.scss' as *;
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: $spacing-lg;
+  animation: fadeIn $transition-normal ease-out;
+}
+
+.modalContent {
+  background: $card-background;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-xl;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn $transition-normal ease-out;
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: $spacing-xl;
+  border-bottom: 1px solid $border-color;
+  background: $background-color;
+}
+
+.modalTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $text-primary;
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  margin-right: $spacing-lg;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: $text-muted;
+  cursor: pointer;
+  padding: $spacing-sm;
+  border-radius: $border-radius-md;
+  transition: all $transition-fast;
+  flex-shrink: 0;
+
+  &:hover {
+    background: $background-color;
+    color: $text-primary;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.modalBody {
+  padding: $spacing-xl;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.metadata {
+  display: grid;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+}
+
+.metadataRow {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+}
+
+.metadataLabel {
+  font-weight: $font-weight-semibold;
+  color: $text-secondary;
+  min-width: 120px;
+  flex-shrink: 0;
+  font-size: $font-size-sm;
+}
+
+.metadataValue {
+  color: $text-primary;
+  flex: 1;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+}
+
+.doiLink {
+  color: $primary-color;
+  text-decoration: none;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  word-break: break-all;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin: 0 0 $spacing-md 0;
+  padding-bottom: $spacing-sm;
+  border-bottom: 2px solid $border-color;
+}
+
+.abstract {
+  color: $text-secondary;
+  line-height: 1.6;
+  margin: 0;
+  font-size: $font-size-base;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.keyword {
+  background: rgba($primary-color, 0.1);
+  color: $primary-color;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border: 1px solid rgba($primary-color, 0.2);
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-xl;
+  border-top: 1px solid $border-color;
+  background: $background-color;
+  gap: $spacing-md;
+}
+
+.pdfButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background: $primary-color;
+  color: white;
+  text-decoration: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.closeModalButton {
+  background: $secondary-color;
+  color: white;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: darken($secondary-color, 10%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .modalOverlay {
+    padding: $spacing-md;
+  }
+
+  .modalContent {
+    max-height: 95vh;
+  }
+
+  .modalHeader {
+    padding: $spacing-lg;
+  }
+
+  .modalTitle {
+    font-size: $font-size-xl;
+  }
+
+  .modalBody {
+    padding: $spacing-lg;
+  }
+
+  .metadataRow {
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  .metadataLabel {
+    min-width: auto;
+  }
+
+  .modalFooter {
+    padding: $spacing-lg;
+    flex-direction: column;
+  }
+
+  .pdfButton,
+  .closeModalButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .modalOverlay {
+    padding: $spacing-sm;
+  }
+
+  .modalHeader {
+    padding: $spacing-md;
+  }
+
+  .modalTitle {
+    font-size: $font-size-lg;
+  }
+
+  .modalBody {
+    padding: $spacing-md;
+  }
+
+  .modalFooter {
+    padding: $spacing-md;
+  }
+
+  .keywords {
+    gap: $spacing-xs;
+  }
+
+  .keyword {
+    font-size: $font-size-xs;
+    padding: $spacing-xs;
+  }
+}

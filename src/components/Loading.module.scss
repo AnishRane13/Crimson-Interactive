@@ -1,0 +1,231 @@
+@use '../styles/variables.scss' as *;
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.loadingMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-md;
+  padding: $spacing-xl;
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid $border-color;
+  border-top: 3px solid $primary-color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingMessage span {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  color: $text-secondary;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: $spacing-lg;
+}
+
+.skeletonCard {
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  min-height: $card-min-height;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.skeletonHeader {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  z-index: 2;
+}
+
+.skeletonBadge {
+  width: 60px;
+  height: 24px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-md;
+}
+
+.skeletonContent {
+  display: flex;
+  padding: $card-padding;
+  gap: $spacing-lg;
+  flex: 1;
+}
+
+.skeletonImage {
+  width: $card-image-width;
+  height: 160px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-md;
+  flex-shrink: 0;
+}
+
+.skeletonDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.skeletonTitle {
+  height: 24px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-sm;
+  width: 100%;
+}
+
+.skeletonAuthors {
+  height: 16px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-sm;
+  width: 80%;
+}
+
+.skeletonMeta {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skeletonJournal {
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-sm;
+}
+
+.skeletonYear {
+  width: 40px;
+  height: 20px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-sm;
+}
+
+.skeletonAbstract {
+  height: 14px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-sm;
+  width: 100%;
+
+  &:last-child {
+    width: 60%;
+  }
+}
+
+.skeletonFooter {
+  padding: $spacing-md $card-padding;
+  border-top: 1px solid $border-color;
+  background: rgba($background-color, 0.5);
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skeletonButton {
+  height: 36px;
+  background: linear-gradient(90deg, $background-color 25%, rgba($background-color, 0.5) 50%, $background-color 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-md;
+  flex: 1;
+
+  &:last-child {
+    flex: 0 0 80px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .skeletonContent {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  .skeletonImage {
+    width: 100%;
+    height: 120px;
+    align-self: center;
+  }
+
+  .skeletonFooter {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .skeletonButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .skeletonCard {
+    margin: 0 $spacing-sm;
+  }
+
+  .skeletonContent {
+    padding: $spacing-md;
+  }
+
+  .skeletonFooter {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  .skeletonMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+  }
+}

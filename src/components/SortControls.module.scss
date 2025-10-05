@@ -1,0 +1,228 @@
+@use '../styles/variables.scss' as *;
+
+.sortControls {
+  background: $card-background;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+  margin-bottom: $spacing-lg;
+}
+
+.sortHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-md;
+}
+
+.sortTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $text-primary;
+  margin: 0;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: $text-secondary;
+  cursor: pointer;
+  padding: $spacing-sm;
+  border-radius: $border-radius-md;
+  transition: all $transition-fast;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) {
+    background: $background-color;
+    color: $text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.chevron {
+  transition: transform $transition-fast;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.sortOptions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+.sortSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.sectionLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-secondary;
+  margin: 0;
+}
+
+.fieldButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.fieldButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $background-color;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.05);
+    color: $text-primary;
+  }
+
+  &.active {
+    border-color: $primary-color;
+    background: $primary-color;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fieldIcon {
+  font-size: $font-size-base;
+}
+
+.fieldLabel {
+  white-space: nowrap;
+}
+
+.orderButtons {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.orderButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $background-color;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all $transition-fast;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  flex: 1;
+
+  &:hover:not(:disabled) {
+    border-color: $primary-color;
+    background: rgba($primary-color, 0.05);
+    color: $text-primary;
+  }
+
+  &.active {
+    border-color: $primary-color;
+    background: $primary-color;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.orderIcon {
+  font-size: $font-size-base;
+}
+
+.orderLabel {
+  white-space: nowrap;
+}
+
+.currentSort {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  background: rgba($primary-color, 0.1);
+  border-radius: $border-radius-md;
+  border-left: 3px solid $primary-color;
+}
+
+.currentLabel {
+  font-size: $font-size-sm;
+  color: $text-secondary;
+}
+
+.currentValue {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+@media (max-width: $breakpoint-md) {
+  .fieldButtons {
+    flex-direction: column;
+  }
+
+  .fieldButton {
+    justify-content: flex-start;
+  }
+
+  .orderButtons {
+    flex-direction: column;
+  }
+
+  .orderButton {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .sortControls {
+    padding: $spacing-md;
+  }
+
+  .sortTitle {
+    font-size: $font-size-base;
+  }
+
+  .fieldButton,
+  .orderButton {
+    padding: $spacing-sm;
+    font-size: $font-size-xs;
+  }
+
+  .currentSort {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-xs;
+  }
+}
